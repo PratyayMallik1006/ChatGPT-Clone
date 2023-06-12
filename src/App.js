@@ -3,11 +3,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [value, setValue] = useState(null);
   const [message, setMessage] = useState(null);
-  const [previousChats, setPreviousChats] = useState({
-    title: "Title",
-    role: "Developer",
-    content: "Sample Message",
-  });
+  const [previousChats, setPreviousChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState(null);
 
   const createNewChat = () => {
@@ -51,7 +47,8 @@ function App() {
       setCurrentTitle(value);
     }
     if (currentTitle && value && message) {
-      setPreviousChats((prevChats) => [
+      const prevChats = previousChats;
+      setPreviousChats([
         ...prevChats,
         {
           title: currentTitle,
